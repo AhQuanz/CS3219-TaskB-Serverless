@@ -1,6 +1,10 @@
 const axios = require("axios");
+const express = require("express");
+const app = express();
+const cors = require("cors");
+app.use(cors());
 
-exports.serverlessFunction = async (req, res) => {
+app.get(",", async (req, res) => {
   res.set("Access-Control-Allow-Origin", "*");
   res.set("Access-Control-Allow-Methods", "GET");
 
@@ -26,4 +30,6 @@ exports.serverlessFunction = async (req, res) => {
     console.log(err.message);
     return res.status(404).send("Bad Request");
   }
-};
+});
+
+exports.serverlessFunction = app;
