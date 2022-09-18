@@ -22,14 +22,8 @@ jobs:
         with:
           credentials_json: "${{ secrets.GCP_CREDENTIALS }}"
 
-      - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
-        with:
-          version: "290.0.1"
-          credentials_json: "${{ secrets.GCP_CREDENTIALS }}"
-          project_id: ${{ secrets.GCP_PROJECT_ID }}
+      - name: Delete Cloud Function
+        run: gcloud functions delete task4-serverless --gen2 --region=asia-southeast1
 
-      - name: Build
-        run: gcloud builds submit --tag gcr.io/$PROJECT_ID/$APP_ID:$GITHUB_SHA
-
-      - name: Deploy
-        run: gcloud run deploy $APP_ID --image gcr.io/$PROJECT_ID/$APP_ID:$GITHUB_SHA --platform managed --region $RUN_REGION --allow-unauthenticated
+      - name: Deploy a Cloud Function
+        run: gcloud functions deploy task4-serverless --entry-point serverless --runtime nodejs15 --trigger-http -project ${{secrets.GCP_PROJECT_ID}}
