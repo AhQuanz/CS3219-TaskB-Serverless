@@ -23,7 +23,7 @@ jobs:
           credentials_json: "${{ secrets.GCP_CREDENTIALS }}"
 
       - name: Delete Cloud Function
-        run: gcloud functions delete task4-serverless
+        run: gcloud functions delete task4-serverless --region=asia-southeast1
 
       - name: Deploy a Cloud Function
         id: deploy-function
