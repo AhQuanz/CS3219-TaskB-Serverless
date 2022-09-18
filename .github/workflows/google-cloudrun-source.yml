@@ -5,8 +5,8 @@ on:
       - main
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-  APP_ID: continous-deployment
-  RUN_REGION: us-east1
+  APP_ID: cs3219-taskb4
+  RUN_REGION: asia-southeast1
   SA_KEY_JSON: ${{ secrets.GCP_SA_KEY_JSON }}
 jobs:
   deploy:
@@ -28,4 +28,4 @@ jobs:
         run: gcloud builds submit --tag gcr.io/$PROJECT_ID/$APP_ID:$GITHUB_SHA
 
       - name: Deploy
-        run: gcloud run deploy $APP_ID --image gcr.io/$PROJECT_ID/$APP_ID:$GITHUB_SHA --platform managed --region $RUN_REGION --allow-unauthenticated
+        run: gcloud run deploy $APP_ID --image gcr.io/$PROJECT_ID/$APP_ID:$GITHUB_SHA --platform managed --region $RUN_REGION
