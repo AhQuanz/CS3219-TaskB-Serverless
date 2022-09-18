@@ -22,6 +22,9 @@ jobs:
         with:
           credentials_json: "${{ secrets.GCP_CREDENTIALS }}"
 
+      - name: Delete Cloud Function
+        run: gcloud functions delete nodejs-http-function --gen2 --region asia-southeast1
+
       - name: Deploy a Cloud Function
         id: deploy-function
         uses: google-github-actions/deploy-cloud-functions@v0.1.0
