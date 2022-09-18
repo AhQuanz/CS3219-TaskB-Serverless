@@ -1,0 +1,22 @@
+{
+  "name": "task-b---serverless",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx functions-framework --target=serverlessFunction"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AhQuanz/CS3219-TaskB-Serverless.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AhQuanz/CS3219-TaskB-Serverless/issues"
+  },
+  "homepage": "https://github.com/AhQuanz/CS3219-TaskB-Serverless#readme",
+  "dependencies": {
+    "@google-cloud/functions-framework": "^3.1.2"
+  }
+}
