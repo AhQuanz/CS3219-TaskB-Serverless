@@ -4,7 +4,7 @@ const app = express();
 const cors = require("cors");
 app.use(cors());
 
-app.get(",", async (req, res) => {
+app.get("/", async (req, res) => {
   res.set("Access-Control-Allow-Origin", "*");
   res.set("Access-Control-Allow-Methods", "GET");
 
