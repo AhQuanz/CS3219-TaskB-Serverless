@@ -26,7 +26,8 @@ jobs:
         id: deploy-function
         uses: google-github-actions/deploy-cloud-functions@v0.1.0
         with:
-          name: CS3219-TaskB-Serverless
+          name: task4-serverless
+          REGION: asia-southeast1 # TODO: update Cloud Run service region
           PROJECT_ID: "${{secrets.GCP_PROJECT_ID}}" # TODO: update Google Cloud project id
           runtime: nodejs10
           source_dir: src
