@@ -1,6 +1,8 @@
 const axios = require("axios");
 
 exports.serverlessFunction = async (req, res) => {
+  res.set("Access-Control-Allow-Origin", "*");
+
   try {
     const { year, modulePrefix } = req.query;
     const nextYear = parseFloat(year) + 1;
