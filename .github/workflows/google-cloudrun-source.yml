@@ -4,11 +4,6 @@ on:
   push:
     branches: ["main"]
 
-env:
-  PROJECT_ID: "${{secrets.GCP_PROJECT_ID}}" # TODO: update Google Cloud project id
-  SERVICE: cs3219-taskb4 # TODO: update Cloud Run service name
-  REGION: asia-southeast1 # TODO: update Cloud Run service region
-
 jobs:
   deploy:
     # Add 'id-token' with the intended permissions for workload identity federation
@@ -35,4 +30,4 @@ jobs:
           PROJECT_ID: "${{secrets.GCP_PROJECT_ID}}" # TODO: update Google Cloud project id
           runtime: nodejs10
           source_dir: src
-          entry_point: serverlessFunction
+          entry_point: task4-serverless
