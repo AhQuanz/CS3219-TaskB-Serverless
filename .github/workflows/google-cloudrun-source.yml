@@ -26,7 +26,7 @@ jobs:
         uses: "google-github-actions/auth@v0"
         with:
           credentials_json: "${{ secrets.GCP_CREDENTIALS }}"
-  
+
       - name: Deploy a Cloud Function
         id: deploy-function
         uses: google-github-actions/deploy-cloud-functions@v0.1.0
@@ -35,4 +35,4 @@ jobs:
           PROJECT_ID: "${{secrets.GCP_PROJECT_ID}}" # TODO: update Google Cloud project id
           runtime: nodejs10
           source_dir: src
-           entry_point: hello_world
+          entry_point: serverlessFunction
