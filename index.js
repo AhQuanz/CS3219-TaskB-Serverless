@@ -5,9 +5,6 @@ const cors = require("cors");
 app.use(cors());
 
 app.get("/", async (req, res) => {
-  res.set("Access-Control-Allow-Origin", "*");
-  res.set("Access-Control-Allow-Methods", "GET");
-
   try {
     const { year, modulePrefix } = req.query;
     const nextYear = parseFloat(year) + 1;
@@ -21,8 +18,18 @@ app.get("/", async (req, res) => {
       }
     });
     modules = modules.slice(0, 10);
+    const data = {};
     if (modules.length) {
-      return res.status(200).send({ modules: modules });
+      await Promise.all(
+        modules.map(async (module) => {
+          const response = await axios.get(
+            `https://api.nusmods.com/v2/${year}-${nextYear}\\modules\\${module}.json`
+          );
+          data[module] = response.data.department;
+        })
+      );
+      console.log("TEST", data);
+      return res.status(200).send({ modules: data });
     } else {
       return res.status(201).send("No modules found");
     }
